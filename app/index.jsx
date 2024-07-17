@@ -2,7 +2,6 @@ import { AntDesign, Entypo, Fontisto, Foundation, MaterialCommunityIcons, Simple
 import React, { useState } from "react";
 import { Image, Linking, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Card from "./Card";
-
 import Projects from './projects';
 
 export default function Index() {
@@ -97,7 +96,7 @@ export default function Index() {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
-            <TouchableOpacity className="flex-1 cursor-default" onPress={() => setShowCard(false)}>
+            <TouchableOpacity className="flex-1 cursor-default" onPress={() => setShowCard(false)} activeOpacity={1}>
 
       <ScrollView className="bg-black">
         <View className="bg-black flex-1 flex-col md:flex-row h-full mt-10">
