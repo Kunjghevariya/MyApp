@@ -1,34 +1,30 @@
-import { AntDesign, Entypo, Fontisto, Foundation, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 import React, { useState } from "react";
-import { Image, Linking, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, SafeAreaView, ScrollView, Text, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import Card from "./Card";
 import Projects from './projects';
+import { AntDesign, Entypo, Fontisto, Foundation, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
+
 
 export default function Index() {
   const [showCard, setShowCard] = useState(false);
   const [cardData, setCardData] = useState({ name: "", desc: "", project: "", icon: "" });
+  const [imageLoading, setImageLoading] = useState(true);
 
-  const openInstagram = () => {
-    Linking.openURL('https://instagram.com/kunj.ghevariya?utm_medium=copy_linkyAhXlheYKHT5PC2kQjjh6BAgGEAI&usg=AOvVaw05h0JDuovVImEiLeJDBQa-');
-  };
 
-  const openFacebook = () => {
-    Linking.openURL('https://www.facebook.com/kunjghevariya/');
-  };
 
-  const openGitHub = () => {
-    Linking.openURL('https://github.com/Kunjghevariya');
-  };
-
-  const openLinkedIn = () => {
-    Linking.openURL('https://www.linkedin.com/in/kunj-ghevariya-165722128/');
-  };
-
-  const openYouTube = () => {
-    Linking.openURL('https://youtube.com/channel/UCYOddEPqnXROEwwEZyt4-PA');
-  };
+  const openInstagram = () => Linking.openURL('https://instagram.com/kunj.ghevariya?utm_medium=copy_linkyAhXlheYKHT5PC2kQjjh6BAgGEAI&usg=AOvVaw05h0JDuovVImEiLeJDBQa-');
+  const openFacebook = () => Linking.openURL('https://www.facebook.com/kunjghevariya/');
+  const openGitHub = () => Linking.openURL('https://github.com/Kunjghevariya');
+  const openLinkedIn = () => Linking.openURL('https://www.linkedin.com/in/kunj-ghevariya-165722128/');
+  const openYouTube = () => Linking.openURL('https://youtube.com/channel/UCYOddEPqnXROEwwEZyt4-PA');
 
   const projectsData = [
+    { 
+      desc: " A multiplayer Truth or Dare game built using the MERN stack (MongoDB, Express.js, React Native, Node.js) and Socket.io for real-time communication.", 
+      title: 'Truth or Dare Game:', 
+      picurl: "https://res.cloudinary.com/dqp45rfrn/image/upload/v1724777513/Untitled_mwcwe9.png", 
+      giturl: "https://github.com/Kunjghevariya/TruthNDare" 
+    },
     { 
       desc: "A personal website built using HTML and CSS.", 
       title: 'My Website', 
@@ -96,77 +92,74 @@ export default function Index() {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
-            <TouchableOpacity className="flex-1 cursor-default" onPress={() => setShowCard(false)} activeOpacity={1}>
-
-      <ScrollView className="bg-black">
-        <View className="bg-black flex-1 flex-col md:flex-row h-full mt-10">
-          <View className="w-full md:w-2/3 justify-center m-5 p-4 md:pl-10">
-            <Text className="text-5xl text-yellow-500 md:text-9xl mb-4 md:mb-8">Hyy,</Text>
-            <Text className="text-5xl text-yellow-500 md:text-9xl mb-4 md:mb-8">I Am Kunj</Text>
-            <Text className="text-lg text-white md:text-2xl mb-4 md:mb-8">
-              Skilled in C, C++, Java, JavaScript, HTML, and CSS. Experienced
-              with Node.js, React.js, React Native, Express.js, Tailwind CSS,
-              NativeWind, and MongoDB. Dedicated to building dynamic and
-              user-friendly applications.
-            </Text>
-            <View className="flex flex-row gap-5">
-              <TouchableOpacity onPress={openInstagram}><AntDesign name="instagram" size={24} color="#E6B31E" /></TouchableOpacity>
-              <TouchableOpacity onPress={openFacebook}><Entypo name="facebook" size={24} color="#E6B31E" /></TouchableOpacity>
-              <TouchableOpacity onPress={openGitHub}><Foundation name="social-github" size={24} color="#E6B31E" /></TouchableOpacity>
-              <TouchableOpacity onPress={openLinkedIn}><Foundation name="social-linkedin" size={24} color="#E6B31E" /></TouchableOpacity>
-              <TouchableOpacity onPress={openYouTube}><SimpleLineIcons name="social-youtube" size={24} color="#E6B31E" /></TouchableOpacity>
+    <ScrollView className="bg-black">
+      <View className="bg-black flex-1 flex-col md:flex-row h-full mt-10">
+        <View className="w-full md:w-2/3 justify-center m-5 p-4 md:pl-10">
+          <Text className="text-5xl text-yellow-500 md:text-9xl mb-4 md:mb-8">Hyy,</Text>
+          <Text className="text-5xl text-yellow-500 md:text-9xl mb-4 md:mb-8">I Am Kunj</Text>
+          <Text className="text-lg text-white md:text-2xl mb-4 md:mb-8">
+            Skilled in C, C++, Java, JavaScript, HTML, and CSS. Experienced
+            with Node.js, React.js, React Native, Express.js, Tailwind CSS,
+            NativeWind, and MongoDB. Dedicated to building dynamic and
+            user-friendly applications.
+          </Text>
+          <View className="flex flex-row gap-5">
+            <TouchableOpacity onPress={openInstagram}><AntDesign name="instagram" size={24} color="#E6B31E" /></TouchableOpacity>
+            <TouchableOpacity onPress={openFacebook}><Entypo name="facebook" size={24} color="#E6B31E" /></TouchableOpacity>
+            <TouchableOpacity onPress={openGitHub}><Foundation name="social-github" size={24} color="#E6B31E" /></TouchableOpacity>
+            <TouchableOpacity onPress={openLinkedIn}><Foundation name="social-linkedin" size={24} color="#E6B31E" /></TouchableOpacity>
+            <TouchableOpacity onPress={openYouTube}><SimpleLineIcons name="social-youtube" size={24} color="#E6B31E" /></TouchableOpacity>
+          </View>
+        </View>
+        <View className="flex-1 justify-center items-center p-4 mb-0 mt-auto">
+          {imageLoading && <ActivityIndicator size="large" color="#E6B31E" />} 
+          <Image
+            style={{ width: 450, height: 440, resizeMode: "contain" }}
+            source={{ uri: "https://res.cloudinary.com/dqp45rfrn/image/upload/v1721072278/Untitled_3_jurzsk.jpg" }}
+            onLoad={() => setImageLoading(false)}
+          />
+        </View>
+      </View>
+      <View>
+        <Text className="text-gray-300 text-5xl m-10">Skills :</Text>
+        <View className="m-10 flex-row gap-10 flex-wrap justify-center items-center md:w-1/2 md:mr-auto md:ml-auto">
+          {skillsData.map((skill, index) => (
+            <TouchableOpacity key={index} onPress={() => {
+              setCardData(skill);
+              setShowCard(true);
+            }}>
+              {skill.icon === 'mongodb' ? <Fontisto name={skill.icon} size={70} color="#E6B31E" /> : <MaterialCommunityIcons name={skill.icon} size={70} color="#E6B31E" />}
+            </TouchableOpacity>
+          ))}
+        </View>
+        {showCard && <Card cardData={cardData} onClose={() => setShowCard(false)} />}
+      </View>
+      <View className="text-white m-10">
+        <Text className="text-gray-300 text-5xl mb-10">Projects :</Text>
+        <View className="flex-row flex-wrap justify-center">
+          {projectsData.map((project, index) => (
+            <View key={index} className="w-full md:w-1/3 p-2">
+              <Projects {...project} />
             </View>
-          </View>
-          <View className="flex-1 justify-center items-center p-4 mb-0 mt-auto">
-            <Image
-              style={{ width: 450, height: 440, resizeMode: "contain" }}
-              source={{
-                uri: "https://res.cloudinary.com/dqp45rfrn/image/upload/v1721072278/Untitled_3_jurzsk.jpg",
-              }}
-            />
-          </View>
+          ))}
         </View>
-        <View>
-          <Text className="text-gray-300 text-5xl m-10">Skills :</Text>
-          <View className="m-10 flex-row gap-10 flex-wrap justify-center items-center md:w-1/2 md:mr-auto md:ml-auto">
-            {skillsData.map((skill, index) => (
-              <TouchableOpacity key={index} onPress={() => {
-                setCardData(skill);
-                setShowCard(true);
-              }}>
-                {skill.icon === 'mongodb' ? <Fontisto name={skill.icon} size={70} color="#E6B31E" /> : <MaterialCommunityIcons name={skill.icon} size={70} color="#E6B31E" />}                
-              </TouchableOpacity>
-            ))}
-          </View>
-          {showCard && <Card cardData={cardData} onClose={() => setShowCard(false)} />}
-        </View>
-        <View className="text-white m-10">
-          <Text className="text-gray-300 text-5xl mb-10">Projects :</Text>
-          <View className="flex-row flex-wrap justify-center">
-            {projectsData.map((project, index) => (
-              <View key={index} className="w-full md:w-1/3 p-2">
-                <Projects {...project} />
-              </View>
-            ))}
-          </View>
-        </View>
-        <View className="text-white m-10">
-          <Text className="text-gray-300 text-5xl mb-10">About Us :</Text>
-          <Text className="text-lg text-white mb-4 md:text-2xl">
-            Welcome to my personal portfolio! I'm Kunj Ghevariya, a passionate developer
-            with expertise in a variety of programming languages and frameworks. I am committed
-            to creating efficient and innovative solutions that make a difference.
-            Through this platform, I share my projects, skills, and journey in the tech world.
-            Stay connected and explore the diverse range of projects I have worked on.
-          </Text>
-          <Text className="text-lg text-white mb-4 md:text-2xl">
-            For collaborations, feel free to reach out via my social media channels or check out
-            my GitHub for more insights into my work. Thank you for visiting!
-          </Text>
-          <Text className="text-lg text-yellow-500 mb-4 md:text-2xl">Email : kunj.ghevariya@gmail.com</Text>
-        </View>
-      </ScrollView>
-</TouchableOpacity>
-    </SafeAreaView>
-  );
+      </View>
+      <View className="text-white m-10">
+        <Text className="text-gray-300 text-5xl mb-10">About Us :</Text>
+        <Text className="text-lg text-white mb-4 md:text-2xl">
+          Welcome to my personal portfolio! I'm Kunj Ghevariya, a passionate developer
+          with expertise in a variety of programming languages and frameworks. I am committed
+          to creating efficient and innovative solutions that make a difference.
+          Through this platform, I share my projects, skills, and journey in the tech world.
+          Stay connected and explore the diverse range of projects I have worked on.
+        </Text>
+        <Text className="text-lg text-white mb-4 md:text-2xl">
+          For collaborations, feel free to reach out via my social media channels or check out
+          my GitHub for more insights into my work. Thank you for visiting!
+        </Text>
+        <Text className="text-lg text-yellow-500 mb-4 md:text-2xl">Email : kunj.ghevariya@gmail.com</Text>
+      </View>
+    </ScrollView>
+  </SafeAreaView>
+);
 }
