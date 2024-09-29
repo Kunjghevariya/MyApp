@@ -92,6 +92,8 @@ export default function Index() {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7787849898368360"
+     crossorigin="anonymous"></script>
     <ScrollView className="bg-black">
       <View className="bg-black flex-1 flex-col md:flex-row h-full mt-10">
         <View className="w-full md:w-2/3 justify-center m-5 p-4 md:pl-10">
